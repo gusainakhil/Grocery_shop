@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EverythingEasy – Fresh Fruits & Vegetables</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+
+<!-- ========== TOAST ========== -->
+<div id="toast" class="toast"></div>
+
+<!-- ========== HEADER ========== -->
+<header class="header" id="header">
+  <div class="header-inner">
+    <div class="logo" onclick="showPage('home')">
+      <div class="logo-icon"><i class="fa-solid fa-leaf"></i></div>
+      <div class="logo-text">
+        <span class="logo-brand">EverythingEasy</span>
+        <span class="logo-sub">Technology</span>
+      </div>
+    </div>
+    <nav class="nav" id="nav">
+      <a class="nav-link active" onclick="showPage('home')" data-page="home">Home</a>
+      <a class="nav-link" onclick="showSection('categories')" data-page="categories">Categories</a>
+      <a class="nav-link" onclick="showSection('products')" data-page="products">Products</a>
+      <a class="nav-link" onclick="showPage('cart')" data-page="cart">Cart</a>
+      <a class="nav-link" onclick="showPage('checkout')" data-page="checkout">Checkout</a>
+      <a class="nav-link" onclick="showSection('contact')" data-page="contact">Contact</a>
+    </nav>
+    <div class="header-actions">
+      <button class="cart-btn" onclick="showPage('cart')">
+        <i class="fa-solid fa-basket-shopping"></i>
+        <span class="cart-badge" id="cart-badge">0</span>
+      </button>
+      <button class="hamburger" id="hamburger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ========== PAGE: HOME ========== -->
+<main id="page-home" class="page active">
+
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <div class="hero-bg">
+      <div class="hero-circle c1"></div>
+      <div class="hero-circle c2"></div>
+      <div class="hero-circle c3"></div>
+      <div class="floating-items">
+        <span class="fi fi1">🥦</span>
+        <span class="fi fi2">🍋</span>
+        <span class="fi fi3">🍎</span>
+        <span class="fi fi4">🥕</span>
+        <span class="fi fi5">🍇</span>
+        <span class="fi fi6">🥑</span>
+        <span class="fi fi7">🌽</span>
+        <span class="fi fi8">🍓</span>
+      </div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-badge"><i class="fa-solid fa-seedling"></i> 100% Organic & Fresh</div>
+      <h1 class="hero-title">Fresh Fruits &amp; Vegetables<br><span>Delivered to Your</span><br><em>Doorstep</em></h1>
+      <p class="hero-desc">Farm-to-table freshness guaranteed. Order now and get delivery in under 30 minutes.</p>
+      <div class="hero-actions">
+        <button class="btn-primary" onclick="showSection('products')">
+          <i class="fa-solid fa-cart-plus"></i> Shop Now
+        </button>
+        <button class="btn-outline" onclick="showSection('categories')">
+          Browse Categories <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><strong>500+</strong><span>Products</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><strong>10K+</strong><span>Customers</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><strong>30min</strong><span>Delivery</span></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-plate">
+        <div class="plate-glow"></div>
+        <div class="plate-emoji">🥗</div>
+        <div class="orbiting o1">🍅</div>
+        <div class="orbiting o2">🫐</div>
+        <div class="orbiting o3">🥝</div>
+        <div class="orbiting o4">🍊</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Categories -->
+  <section class="section categories-section" id="categories">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-label">Browse By</span>
+        <h2 class="section-title">Shop Categories</h2>
+        <p class="section-desc">Discover our handpicked selection of the freshest produce</p>
+      </div>
+      <div class="categories-grid">
+        <div class="cat-card" onclick="filterProducts('fruit')">
+          <div class="cat-icon">🍎</div>
+          <div class="cat-bg bg-red"></div>
+          <h3>Fresh Fruits</h3>
+          <p>Seasonal & exotic fruits</p>
+          <span class="cat-count">24 items</span>
+          <div class="cat-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+        </div>
+        <div class="cat-card" onclick="filterProducts('vegetable')">
+          <div class="cat-icon">🥦</div>
+          <div class="cat-bg bg-green"></div>
+          <h3>Vegetables</h3>
+          <p>Farm-fresh daily picks</p>
+          <span class="cat-count">36 items</span>
+          <div class="cat-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+        </div>
+        <div class="cat-card" onclick="filterProducts('organic')">
+          <div class="cat-icon">🌿</div>
+          <div class="cat-bg bg-teal"></div>
+          <h3>Organic</h3>
+          <p>Certified organic produce</p>
+          <span class="cat-count">18 items</span>
+          <div class="cat-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+        </div>
+        <div class="cat-card" onclick="filterProducts('all')">
+          <div class="cat-icon">🛒</div>
+          <div class="cat-bg bg-yellow"></div>
+          <h3>All Products</h3>
+          <p>Browse everything</p>
+          <span class="cat-count">78 items</span>
+          <div class="cat-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products -->
+  <section class="section products-section" id="products">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-label">Our Selection</span>
+        <h2 class="section-title">Fresh Products</h2>
+        <p class="section-desc">Sourced directly from local farms every morning</p>
+      </div>
+      <div class="filter-tabs">
+        <button class="filter-btn active" onclick="filterProducts('all')" data-filter="all">All</button>
+        <button class="filter-btn" onclick="filterProducts('fruit')" data-filter="fruit">Fruits</button>
+        <button class="filter-btn" onclick="filterProducts('vegetable')" data-filter="vegetable">Vegetables</button>
+        <button class="filter-btn" onclick="filterProducts('organic')" data-filter="organic">Organic</button>
+      </div>
+      <div class="products-grid" id="products-grid"></div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section class="section why-section" id="why">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-label">Why Us</span>
+        <h2 class="section-title">Why Choose EverythingEasy?</h2>
+      </div>
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="why-icon"><i class="fa-solid fa-medal"></i></div>
+          <h3>Freshness Guarantee</h3>
+          <p>Every product is handpicked and quality-checked before it reaches your doorstep.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon"><i class="fa-solid fa-bolt"></i></div>
+          <h3>Fast Delivery</h3>
+          <p>Get your groceries delivered in under 30 minutes, 7 days a week, rain or shine.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon"><i class="fa-solid fa-seedling"></i></div>
+          <h3>Organic Quality</h3>
+          <p>100% certified organic produce, free from pesticides and harmful chemicals.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon"><i class="fa-solid fa-indian-rupee-sign"></i></div>
+          <h3>Best Prices</h3>
+          <p>Direct farm sourcing means better prices for you without compromising quality.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon"><i class="fa-solid fa-recycle"></i></div>
+          <h3>Eco Packaging</h3>
+          <p>All deliveries are packed in 100% biodegradable, eco-friendly packaging.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon"><i class="fa-solid fa-headset"></i></div>
+          <h3>24/7 Support</h3>
+          <p>Our team is always available to help you with any questions or concerns.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="section contact-section" id="contact">
+    <div class="container">
+      <div class="contact-wrapper">
+        <div class="contact-info">
+          <span class="section-label">Get in Touch</span>
+          <h2 class="section-title">We'd Love to Hear From You</h2>
+          <p>Have questions about our products or delivery? Reach out to us!</p>
+          <div class="contact-details">
+            <div class="contact-item"><i class="fa-solid fa-phone"></i><span>+91 98765 43210</span></div>
+            <div class="contact-item"><i class="fa-solid fa-envelope"></i><span>hello@everythingeasy.in</span></div>
+            <div class="contact-item"><i class="fa-solid fa-location-dot"></i><span>123 Green Park, New Delhi, 110001</span></div>
+          </div>
+        </div>
+        <form class="contact-form" onsubmit="submitContact(event)">
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" placeholder="Your name" required />
+          </div>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" placeholder="your@email.com" required />
+          </div>
+          <div class="form-group">
+            <label>Message</label>
+            <textarea rows="4" placeholder="How can we help?" required></textarea>
+          </div>
+          <button type="submit" class="btn-primary full-width">
+            <i class="fa-solid fa-paper-plane"></i> Send Message
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ========== PAGE: CART ========== -->
+<main id="page-cart" class="page">
+  <div class="page-hero">
+    <div class="container">
+      <h1><i class="fa-solid fa-basket-shopping"></i> Your Cart</h1>
+      <p>Review your selected items</p>
+    </div>
+  </div>
+  <div class="container cart-container">
+    <div class="cart-layout">
+      <div class="cart-items-col">
+        <div id="cart-items-list"></div>
+        <div id="cart-empty" class="cart-empty" style="display:none">
+          <div class="empty-icon">🛒</div>
+          <h3>Your cart is empty</h3>
+          <p>Add some fresh products to get started!</p>
+          <button class="btn-primary" onclick="showPage('home')">Browse Products</button>
+        </div>
+      </div>
+      <div class="cart-summary-col">
+        <div class="cart-summary-card">
+          <h3>Order Summary</h3>
+          <div class="summary-row"><span>Subtotal</span><span id="cart-subtotal">₹0</span></div>
+          <div class="summary-row"><span>Delivery</span><span class="free-tag">FREE</span></div>
+          <div class="summary-row discount"><span>Discount (10%)</span><span id="cart-discount">-₹0</span></div>
+          <div class="summary-divider"></div>
+          <div class="summary-row total"><span>Total</span><span id="cart-total">₹0</span></div>
+          <button class="btn-primary full-width" onclick="showPage('checkout')" id="checkout-btn">
+            Proceed to Checkout <i class="fa-solid fa-arrow-right"></i>
+          </button>
+          <button class="btn-ghost full-width" onclick="showPage('home')">
+            <i class="fa-solid fa-arrow-left"></i> Continue Shopping
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- ========== PAGE: CHECKOUT ========== -->
+<main id="page-checkout" class="page">
+  <div class="page-hero">
+    <div class="container">
+      <h1><i class="fa-solid fa-truck-fast"></i> Checkout</h1>
+      <p>Fill in your delivery details</p>
+    </div>
+  </div>
+  <div class="container checkout-container">
+    <div class="checkout-layout">
+      <div class="checkout-form-col">
+        <div class="form-card">
+          <h3><i class="fa-solid fa-location-dot"></i> Delivery Details</h3>
+          <form id="checkout-form" onsubmit="placeOrder(event)">
+            <div class="form-row">
+              <div class="form-group">
+                <label>Full Name *</label>
+                <input type="text" id="fname" placeholder="John Doe" required />
+              </div>
+              <div class="form-group">
+                <label>Phone Number *</label>
+                <input type="tel" id="phone" placeholder="+91 98765 43210" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Delivery Address *</label>
+              <textarea id="address" rows="3" placeholder="House No., Street, Locality..." required></textarea>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>City *</label>
+                <input type="text" id="city" placeholder="New Delhi" required />
+              </div>
+              <div class="form-group">
+                <label>Pincode *</label>
+                <input type="text" id="pincode" placeholder="110001" maxlength="6" required />
+              </div>
+            </div>
+            <div class="payment-section">
+              <h4><i class="fa-solid fa-credit-card"></i> Payment Method</h4>
+              <div class="payment-options">
+                <label class="payment-option active">
+                  <input type="radio" name="payment" value="cod" checked />
+                  <i class="fa-solid fa-money-bill-wave"></i> Cash on Delivery
+                </label>
+                <label class="payment-option">
+                  <input type="radio" name="payment" value="upi" />
+                  <i class="fa-solid fa-mobile-screen"></i> UPI / QR
+                </label>
+                <label class="payment-option">
+                  <input type="radio" name="payment" value="card" />
+                  <i class="fa-solid fa-credit-card"></i> Card
+                </label>
+              </div>
+            </div>
+            <button type="submit" class="btn-primary full-width place-order-btn">
+              <i class="fa-solid fa-check-circle"></i> Place Order
+            </button>
+          </form>
+        </div>
+      </div>
+      <div class="checkout-summary-col">
+        <div class="cart-summary-card">
+          <h3>Order Summary</h3>
+          <div id="checkout-items-list"></div>
+          <div class="summary-divider"></div>
+          <div class="summary-row"><span>Subtotal</span><span id="co-subtotal">₹0</span></div>
+          <div class="summary-row"><span>Delivery</span><span class="free-tag">FREE</span></div>
+          <div class="summary-row discount"><span>Discount (10%)</span><span id="co-discount">-₹0</span></div>
+          <div class="summary-divider"></div>
+          <div class="summary-row total"><span>Total</span><span id="co-total">₹0</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- ========== PAGE: SUCCESS ========== -->
+<main id="page-success" class="page">
+  <div class="success-container">
+    <div class="success-card">
+      <div class="success-animation">
+        <div class="success-circle">
+          <i class="fa-solid fa-check"></i>
+        </div>
+        <div class="success-rings">
+          <div class="ring r1"></div>
+          <div class="ring r2"></div>
+          <div class="ring r3"></div>
+        </div>
+      </div>
+      <h1 class="success-title">Order Placed Successfully! 🎉</h1>
+      <p class="success-msg">Your order has been confirmed and will be delivered to your doorstep shortly.</p>
+      <div class="success-details" id="success-details"></div>
+      <div class="success-features">
+        <div class="sf-item"><i class="fa-solid fa-truck-fast"></i> Estimated 30 min delivery</div>
+        <div class="sf-item"><i class="fa-solid fa-phone"></i> You'll receive a confirmation call</div>
+        <div class="sf-item"><i class="fa-solid fa-leaf"></i> Fresh & organic guaranteed</div>
+      </div>
+      <div class="success-actions">
+        <button class="btn-primary" onclick="continueShopping()">
+          <i class="fa-solid fa-cart-plus"></i> Continue Shopping
+        </button>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- ========== FOOTER ========== -->
+<footer class="footer">
+  <div class="footer-top">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <div class="logo" onclick="showPage('home')" style="cursor:pointer">
+          <div class="logo-icon"><i class="fa-solid fa-leaf"></i></div>
+          <div class="logo-text">
+            <span class="logo-brand">EverythingEasy</span>
+            <span class="logo-sub">Technology</span>
+          </div>
+        </div>
+        <p>Your trusted partner for fresh, organic, and healthy groceries delivered right to your door.</p>
+        <div class="social-links">
+          <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <a onclick="showPage('home')">Home</a>
+        <a onclick="showSection('products')">Products</a>
+        <a onclick="showSection('categories')">Categories</a>
+        <a onclick="showPage('cart')">Cart</a>
+      </div>
+      <div class="footer-col">
+        <h4>Categories</h4>
+        <a onclick="filterProducts('fruit')">Fresh Fruits</a>
+        <a onclick="filterProducts('vegetable')">Vegetables</a>
+        <a onclick="filterProducts('organic')">Organic</a>
+        <a onclick="filterProducts('all')">All Products</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <p><i class="fa-solid fa-phone"></i> +91 98765 43210</p>
+        <p><i class="fa-solid fa-envelope"></i> hello@everythingeasy.in</p>
+        <p><i class="fa-solid fa-location-dot"></i> New Delhi, India</p>
+        <p><i class="fa-solid fa-globe"></i> <a href="https://everythingeasy.in/" target="_blank">everythingeasy.in</a></p>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <p>© 2025 Design by <a href="https://everythingeasy.in/" target="_blank">EverythingEasy Technology</a>. All rights reserved.</p>
+      <p>Made with <i class="fa-solid fa-heart"></i> for fresh living</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Loading Overlay -->
+<div id="loading-overlay" class="loading-overlay" style="display:none">
+  <div class="loading-content">
+    <div class="loading-spinner"></div>
+    <p>Placing your order...</p>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
